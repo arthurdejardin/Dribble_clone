@@ -1,2 +1,7 @@
-%h1 Post Index Placeholder
+- @posts.each do |post|
+	%h1= link_to post.title, post
+	= truncate(post.description, length: 20)
 
+
+%br/
+=link_to "Add inspiration", new_post_path
