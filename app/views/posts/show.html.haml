@@ -11,12 +11,12 @@
 			.description= simple_format(@post.description)
 		.post_data
 			= link_to "Visit link", @post.link, class: "button"
-			= link_to like_post_path(@post), method: :delete, class: "data" do
+			= link_to like_post_path(@post), method: :get, class: "data" do
 				%i.fa.fa-thumbs-o-up
 				= pluralize(@post.get_upvotes.size, "like")
-			= link_to dislike_post_path(@post), method: :delete, class: "data" do
+			= link_to dislike_post_path(@post), method: :get, class: "data" do
 				%i.fa.fa-thumbs-o-down
-				= pluralize(@post.get_upvotes.size, "dislike")
+				= pluralize(@post.get_downvotes.size, "dislike")
 			%p.data
 				%i.fa.fa-comments-o
 				= pluralize(@post.comments.count, "comment")
