@@ -23,6 +23,27 @@
 			- if @post.user == current_user
 				= link_to "edit", edit_post_path(@post), class: "data"
 				= link_to "delete", post_path(@post), method: :delete, data: { confirm: "Sure?" }, class: "data"
+		#random_post
+			%h3 Random inspiration
+			.post
+				.post_image
+					= link_to (image_tag @random_post.image.url(:small)), post_path(@random_post)
+				.post_content
+					.title
+						%h2= link_to @random_post.title, post_path(@random_post)
+					.data.clearfix
+						%p.username
+							Shared by
+							= @random_post.user.name
+						%p.buttons
+							%span
+								%i.fa.fa-comments-o
+								= @random_post.comments.count
+							%span
+								%i.fa.fa-thumbs-o-up
+								= @random_post.get_likes.size
+
+
 
 #comments
 	%h2.comment_count= pluralize(@post.comments.count, "Comment")
