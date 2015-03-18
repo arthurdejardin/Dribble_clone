@@ -2,6 +2,7 @@
 
 %p= @post.link
 %p= @post.description
+%p= @post.user.name
 
 = link_to "back", root_path
 = link_to "edit", edit_post_path(@post)
